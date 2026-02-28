@@ -1,4 +1,4 @@
-#include "../include/glad/glad.h"
+#include "../../include/glad/glad.h"
 #include <GLFW/glfw3.h>
 #include <string.h>
 #include <stdio.h>
@@ -35,7 +35,7 @@ void checkError(unsigned int shader, unsigned int shaderOrProgram) {
   }
   if (!success) {
     glGetShaderInfoLog(shader, 512, NULL, infoLog);
-    printf("%s\n");
+    printf("%s\n", infoLog);
   }
 }
 
