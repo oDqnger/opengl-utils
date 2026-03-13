@@ -203,7 +203,10 @@ static Mesh processMesh(Model* model, struct aiMesh* mesh, const struct aiScene*
     memcpy(textures + diffuse_count,        specular_textures, specular_count * sizeof(Texture));
 
     /* --- Build our Mesh --- */
-    Mesh result = Mesh_create(vertices, indices, textures);
+Mesh result = Mesh_create(vertices, mesh->mNumVertices,
+                          indices,  index_count,
+                          textures, texture_count);
+// remove the three lines that set counts manually after this
     result.vertex_count  = mesh->mNumVertices;
     result.index_count   = index_count;
     result.texture_count = texture_count;

@@ -26,7 +26,9 @@ typedef struct {
   unsigned int VAO, VBO, EBO;
 } Mesh;
 
-Mesh Mesh_create(Vertex* vertices,unsigned int* indices,Texture* textures);
+Mesh Mesh_create(Vertex* vertices, unsigned int vertex_count,
+                 unsigned int* indices, unsigned int index_count,
+                 Texture* textures, unsigned int texture_count);
 
 void Draw(Mesh* mesh, unsigned int* Shader);
 

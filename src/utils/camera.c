@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec3 right, float acceleration) {
+void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec3 right) {
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         vec3 velocity;
         glm_vec3_mul(dir, (vec3){speed, 0.0f, speed}, velocity);
@@ -30,13 +30,12 @@ void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec
     }
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
       cameraPos[1] += 2 * speed;
-      acceleration = 0.2;
     }
     if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS) {
       cameraPos[1] -= 2 * speed;
-      acceleration = 0.2;
     }
 }
+
 void movementMouse(GLFWwindow *window, double xpos, double ypos, double lastX, double lastY, float yaw, float pitch, vec3 dir) {
   float xoffset = xpos - lastX;
   float yoffset = lastY - ypos; 

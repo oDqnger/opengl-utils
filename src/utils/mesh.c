@@ -57,15 +57,18 @@ static void setupMesh(Mesh* mesh) {
 
   glBindVertexArray(0);
 }
-Mesh Mesh_create(Vertex* vertices,unsigned int* indices,Texture* textures)
+Mesh Mesh_create(Vertex* vertices, unsigned int vertex_count,
+                 unsigned int* indices, unsigned int index_count,
+                 Texture* textures, unsigned int texture_count)
 {
     Mesh mesh;
-    mesh.vertices = vertices;
-    mesh.indices = indices;
-    mesh.textures = textures;
-
+    mesh.vertices      = vertices;
+    mesh.vertex_count  = vertex_count;
+    mesh.indices       = indices;
+    mesh.index_count   = index_count;
+    mesh.textures      = textures;
+    mesh.texture_count = texture_count;
     setupMesh(&mesh);
-
     return mesh;
 }
 
