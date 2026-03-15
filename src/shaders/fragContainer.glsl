@@ -20,7 +20,7 @@ struct DirLight {
     vec3 diffuse;
     vec3 specular;
 };
-uniform DirLight dirLight[2];
+uniform DirLight dirLight[1];
 
 vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir) {
     vec3 direction  = normalize(light.targetPos - light.lightPos);
@@ -76,6 +76,6 @@ void main() {
     // for (int i = 0; i < NR_POINT_LIGHTS; i++) {
     //     result += CalcPointLight(pointLights[i], norm, FragPos, viewDir);
     // }
-
+    
     aColor = vec4(result, 1.0f);
 }

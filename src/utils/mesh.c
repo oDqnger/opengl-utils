@@ -6,7 +6,7 @@
 void Draw(Mesh* mesh, unsigned int* shader) {
   unsigned int diffuseNr = 1;
   unsigned int specularNr = 1;
-
+  glUseProgram(*shader);
   for (unsigned int i = 0; i < mesh->texture_count; i++) {
     glActiveTexture(GL_TEXTURE0 + i);
 
