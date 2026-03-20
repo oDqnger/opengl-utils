@@ -9,6 +9,10 @@ uniform vec3 viewPos;
 struct Material {
     sampler2D texture_diffuse1;
     sampler2D texture_specular1;
+    sampler2D texture_diffuse2;
+    sampler2D texture_specular2;
+    int diffuseCount;
+    int specularCount;
     float shininess;
 };
 uniform Material material;
@@ -65,17 +69,64 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir) {
     return (ambient + diffuse + specular);
 }
 
+struct SpotLight {
+  float innerCutoff;
+  float outerCutoff;
+  vec3 cameraDir;
+  vec3 cameraPos;
+
+  float constant;
+  float linear;
+  float quadratic;
+};
+
+uniform SpotLight spotLight;
+
+vec3 CalcSpotLight(SpotLight spotLight, vec3 viewDir, vec3 normal, vec3 fragPos) {
+  float theta = (dot(normalize(-spotLight.cameraDir), viewDir));
+  float intensity = clamp((theta - spotLight.outerCutoff) / (spotLight.innerCutoff - spotLight.outerCutoff),0.1,1);
+  float diff = max(dot(normal, viewDir), 0.0);
+  vec3 ambient;
+  if (material.diffuseCount > 1) {
+    ambient = 0.2 * vec3(texture(material.texture_diffuse1, TexCoords)) * vec3(texture(material.texture_diffuse2, TexCoords));
+  } else {
+    ambient = 0.2 * vec3(texture(material.texture_diffuse1, TexCoords));
+  }
+  vec3 diffuse;
+  if (material.specularCount > 1) {
+    diffuse  = diff * vec3(texture(material.texture_diffuse1, TexCoords)) * vec3(texture(material.texture_diffuse2, TexCoords));
+  } else {
+    diffuse  = diff * vec3(texture(material.texture_diffuse1, TexCoords));
+  }
+
+  float distance    = length(spotLight.cameraPos - fragPos);
+  float attenuation = 1.0 / (spotLight.constant + spotLight.linear * distance + spotLight.quadratic * (distance * distance));
+
+  ambient *= (intensity * attenuation);
+  diffuse *= (intensity * attenuation);
+  return (ambient + diffuse);
+}
+
+float LinearizeDepth(float depth, float near, float far) 
+{
+    float z = depth * 2.0 - 1.0; // back to NDC 
+    return (2.0 * near * far) / (far + near - z * (far - near));	
+}
+
 void main() {
     vec3 norm    = normalize(Normal);
     vec3 viewDir = normalize(viewPos - FragPos);
 
     vec3 result = vec3(0.0);
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 1; i++) {
         result += CalcDirLight(dirLight[i], norm, viewDir);
     }
     // for (int i = 0; i < NR_POINT_LIGHTS; i++) {
     //     result += CalcPointLight(pointLights[i], norm, FragPos, viewDir);
     // }
-    
+
+    // result += CalcSpotLight(spotLight, viewDir, norm, FragPos);
+    // float depth = LinearizeDepth(gl_FragCoord.z, 0.1, 10) / 10;
+    // result += pow(depth, 32);
     aColor = vec4(result, 1.0f);
 }

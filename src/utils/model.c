@@ -1,5 +1,5 @@
 #include "model.h"
-#include "../../include/glad/glad.h"
+#include "glad/glad.h"
 #include "stb_image.h"
 
 #include <assimp/cimport.h>
@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 static void processNode(Model* model, struct aiNode* node, const struct aiScene* scene);
 static Mesh processMesh(Model* model, struct aiMesh* mesh, const struct aiScene* scene);
 static void loadMaterialTextures(Model* model,
@@ -147,7 +146,7 @@ Model Model_load(const char* path)
 
     const struct aiScene* scene = aiImportFile(path,
              aiProcess_Triangulate |
-             aiProcess_FlipUVs     |
+             
              aiProcess_EmbedTextures);
 
     if (!scene || (scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE) || !scene->mRootNode) {
@@ -165,10 +164,6 @@ Model Model_load(const char* path)
     }
 
     processNode(&model, scene->mRootNode, scene);
-
-  printf("Total meshes loaded: %u\n", model.mesh_count);
-  printf("Total nodes in scene: %u\n", scene->mNumMeshes);
-  printf("Total textures loaded: %u\n", model.textures_loaded_count);
 
     aiReleaseImport(scene);
     return model;

@@ -1,8 +1,8 @@
-#include "../../include/glad/glad.h"
+#include "glad/glad.h"
 #include <GLFW/glfw3.h>
-#include "./stb_image.h"
 #include <cglm/cglm.h>
 
+#include "stb_image.h"
 unsigned char* load_data(int *width, int *height, int *nrChannels, const char* path) {
   stbi_set_flip_vertically_on_load(true);
   unsigned char *img_data = stbi_load(path, width, height, nrChannels, 0);

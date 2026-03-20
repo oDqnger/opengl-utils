@@ -1,8 +1,9 @@
-#include "./mesh.h"
-#include "../../include/glad/glad.h"
+#include "mesh.h"
+#include "glad/glad.h"
 #include <cglm/cglm.h>
-#include <string.h>
 
+#include <stdio.h>
+#include <string.h>
 void Draw(Mesh* mesh, unsigned int* shader) {
   unsigned int diffuseNr = 1;
   unsigned int specularNr = 1;
@@ -25,6 +26,8 @@ void Draw(Mesh* mesh, unsigned int* shader) {
     glUniform1i(glGetUniformLocation(*shader, uniform), i);
     glBindTexture(GL_TEXTURE_2D, mesh->textures[i].id);
   }
+  glUniform1i(glGetUniformLocation(*shader, "material.diffuseCount"), diffuseNr);
+  glUniform1i(glGetUniformLocation(*shader, "material.specularCount"), specularNr);
 
   glActiveTexture(GL_TEXTURE0);
 

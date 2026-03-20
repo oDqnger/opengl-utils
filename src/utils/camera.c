@@ -1,19 +1,19 @@
-#include "../../include/glad/glad.h"
+#include "glad/glad.h"
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
+
 #include <stdbool.h>
 #include <stdio.h>
-
 void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec3 right) {
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         vec3 velocity;
-        glm_vec3_mul(dir, (vec3){speed, 0.0f, speed}, velocity);
+        glm_vec3_scale(dir, speed, velocity);
         glm_vec3_add(cameraPos, velocity, cameraPos);
     }
 
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
         vec3 velocity;
-        glm_vec3_mul(dir, (vec3){speed, 0.0f, speed}, velocity);
+        glm_vec3_scale(dir, speed, velocity);
         glm_vec3_sub(cameraPos, velocity, cameraPos);
     }
     

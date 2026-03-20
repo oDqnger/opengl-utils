@@ -1,7 +1,6 @@
-#include "./block.h"
-#include "./textures.h"
-#include "../../include/glad/glad.h"
-
+#include "block.h"
+#include "textures.h"
+#include "glad/glad.h"
 float vertices[] = {
     // Back face
     -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
