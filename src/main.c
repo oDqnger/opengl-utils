@@ -76,7 +76,7 @@ int main() {
   // unsigned int containerSpecular = setTextureBuffer("/home/diman/Desktop/Diman/Programming work/C/template/src/assets/container2_specular.png");
   
   int width, height, nrChannels;
-  unsigned char* grassData = load_data(&width, &height, &nrChannels, "/home/diman/Desktop/Diman/Programming work/C/template/src/assets/grass.png");
+  unsigned char* grassData = load_data(&width, &height, &nrChannels, "/home/diman/Desktop/Diman/Programming work/C/template/src/assets/blending_transparent_window.png");
   unsigned int grassTexture;
   generateTexture(&grassTexture);
   bindTexture(grassTexture);
@@ -128,6 +128,8 @@ glm_perspective(glm_rad(80.0f), 800.0f/600.f, 0.1f, 400, projection);
  
   glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
   glEnable(GL_DEPTH_TEST);
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   DirectionalLight dl[1] = {
     {{ 2, 0, 2}, {0.2, 0.2, 0.2}, {1.0f, 1.0f, 1.0f}, {1.0f, 1.0f, 1.0f}},

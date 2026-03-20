@@ -32,3 +32,4 @@ target_link_libraries(main
     m
     dl
 )
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
