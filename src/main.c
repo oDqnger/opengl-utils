@@ -15,7 +15,6 @@
 #include "block.h"
 #include "model.h"
 #include "stb_image.h"
-#include "nuklear.h"
 
 float yaw   = -90.0f;
 float pitch =  0.0f;
