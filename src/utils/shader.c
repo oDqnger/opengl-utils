@@ -10,7 +10,7 @@ char* readFile(const char* filePath) {
   FILE* fptr;
   fptr = fopen(filePath, "r");
   if (fptr == NULL) {
-    printf("ERROR IN FILE PATH\n");
+    printf("ERROR IN FILE PATH (SHADER ISSUE) \n");
   }
   char str[10000];
   char* source = malloc(sizeof(char) * 10000);

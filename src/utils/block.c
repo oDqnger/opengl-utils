@@ -66,11 +66,11 @@ float vertices[] = {
 
 unsigned int setTextureBuffer(const char* path) {
   int width, height, nrChannels;
-  unsigned char *img_data = load_data(&width, &height, &nrChannels, path);
+  unsigned char *img_data = load_data(&width, &height, &nrChannels, path, true);
   unsigned int textureId;
   generateTexture(&textureId);
   bindTexture(textureId);
-  uploadTexture(width, height, nrChannels, img_data);
+  uploadTexture(width, height, nrChannels, img_data, GL_TEXTURE_2D);
   setTexParameters();
   return textureId;
 }

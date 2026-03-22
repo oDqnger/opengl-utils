@@ -1,3 +1,14 @@
 /home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles/main.dir
 /home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles/edit_cache.dir
 /home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles/rebuild_cache.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles/list_install_components.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles/install.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles/install/local.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles/install/strip.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/third_party/cimgui/CMakeFiles/cimgui.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/third_party/cimgui/CMakeFiles/edit_cache.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/third_party/cimgui/CMakeFiles/rebuild_cache.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/third_party/cimgui/CMakeFiles/list_install_components.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/third_party/cimgui/CMakeFiles/install.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/third_party/cimgui/CMakeFiles/install/local.dir
+/home/diman/Desktop/Diman/Programming work/C/template/build/third_party/cimgui/CMakeFiles/install/strip.dir

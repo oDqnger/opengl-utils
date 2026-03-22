@@ -4,17 +4,31 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec3 right) {
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        vec3 velocity;
-        glm_vec3_scale(dir, speed, velocity);
-        glm_vec3_add(cameraPos, velocity, cameraPos);
-    }
+void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec3 right, bool onFloor) {
+    vec3 forward = { dir[0], 0.0f, dir[2] };
+    if (glm_vec3_norm(forward) > 0.0001f) glm_vec3_normalize(forward);
 
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+        if (!onFloor) {
+          vec3 vel;
+          glm_vec3_scale(forward, speed, vel);
+          glm_vec3_add(cameraPos, vel, cameraPos);
+        } else {
+          vec3 vel;
+          glm_vec3_scale(forward, -speed, vel);
+          glm_vec3_add(cameraPos, vel, cameraPos);
+        }
+    }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        vec3 velocity;
-        glm_vec3_scale(dir, speed, velocity);
-        glm_vec3_sub(cameraPos, velocity, cameraPos);
+        if (!onFloor) {
+          vec3 vel;
+          glm_vec3_scale(forward, speed, vel);
+          glm_vec3_sub(cameraPos, vel, cameraPos);
+        } else {
+          vec3 vel;
+          glm_vec3_scale(forward, -speed, vel);
+          glm_vec3_sub(cameraPos, vel, cameraPos);
+        }
     }
     
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
@@ -36,30 +50,29 @@ void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec
     }
 }
 
-void movementMouse(GLFWwindow *window, double xpos, double ypos, double lastX, double lastY, float yaw, float pitch, vec3 dir) {
-  float xoffset = xpos - lastX;
-  float yoffset = lastY - ypos; 
-  lastX = xpos;
-  lastY = ypos;
+void movementMouse(GLFWwindow *window, double xpos, double ypos, double *lastX, double *lastY, float *yaw, float *pitch, vec3 dir) {
+  float xoffset = xpos - *lastX;
+  float yoffset = *lastY - ypos; 
+  *lastX = xpos;
+  *lastY = ypos;
 
   float sensitivity = 0.1f;
   xoffset *= sensitivity;
   yoffset *= sensitivity;
 
-  yaw   += xoffset;
-  pitch += yoffset;
+  *yaw   += xoffset;
+  *pitch += yoffset;
 
-  if(pitch > 89.0f)
-      pitch = 89.0f;
-  if(pitch < -89.0f)
-      pitch = -89.0f;
+  if(*pitch > 89.0f)
+      *pitch = 89.0f;
+  if(*pitch < -89.0f)
+      *pitch = -89.0f;
 
   vec3 direction;
-  direction[0] = cosf(glm_rad(yaw)) * cosf(glm_rad(pitch));
-  direction[1] = sinf(glm_rad(pitch));
-  direction[2] = sinf(glm_rad(yaw)) * cosf(glm_rad(pitch));
+  direction[0] = cosf(glm_rad(*yaw)) * cosf(glm_rad(*pitch));
+  direction[1] = sinf(glm_rad(*pitch));
+  direction[2] = sinf(glm_rad(*yaw)) * cosf(glm_rad(*pitch));
   glm_vec3_normalize_to(direction, dir);
-
 }
 void calcCoordAxes(vec3 right, vec3 up, vec3 dir) {
   glm_vec3_crossn(dir, (vec3) {0.0f, 1.0f, 0.0f}, right);
@@ -69,8 +82,9 @@ void calcTarget(vec3 cameraPos, vec3 dir, vec3 target) {
   glm_vec3_add(cameraPos, dir, target);
 }
 
-bool checkCollision(float sumRadi, float distance) {
-  if (distance <= sumRadi) {
+bool checkCollision(vec3 cameraPos, vec3 objPos, float radius) {
+  vec3 box[2] = {{objPos[0]-radius, objPos[1]-radius, objPos[2]-radius}, {objPos[0]+radius, objPos[1]+radius, objPos[2]+radius}};
+  if (glm_aabb_point(box, cameraPos) == true) {
     return true;
   }
   return false;

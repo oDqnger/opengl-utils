@@ -15,11 +15,13 @@
 #include "block.h"
 #include "model.h"
 #include "stb_image.h"
+#include "skybox.h"
+#include "framebuffer.h"
 
 float yaw   = -90.0f;
 float pitch =  0.0f;
-float lastX =  800.0f / 2.0;
-float lastY =  600.0 / 2.0;
+double lastX =  800.0 / 2.0;
+double lastY =  600.0 / 2.0;
 vec3 dir;
 mat4 view;
 vec3 right;
@@ -29,6 +31,7 @@ vec3 target = {0.0f, 0.0f, 0.0f};
 mat4 model;
 float speed;
 float acceleration = 0.2;
+float disableMovement = false;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -40,12 +43,12 @@ void processInput(GLFWwindow *window)
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-    movementKeys(window, dir, speed, cameraPos, right);
+    movementKeys(window, dir, speed, cameraPos, right, disableMovement);
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
-  movementMouse(window, xpos, ypos, lastX, lastY, yaw, pitch, dir);
+  movementMouse(window, xpos, ypos, &lastX, &lastY, &yaw, &pitch, dir);
 }
 
 int main() {
@@ -69,61 +72,44 @@ int main() {
   
   glViewport(0, 0, 800, 600);
   glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-  
-  // unsigned int containerVAO = setBufferObject();
-  // unsigned int containerTexture = setTextureBuffer("/home/diman/Desktop/Diman/Programming work/C/template/src/assets/container2.png");
-  // unsigned int containerSpecular = setTextureBuffer("/home/diman/Desktop/Diman/Programming work/C/template/src/assets/container2_specular.png");
-  
-  int width, height, nrChannels;
-  unsigned char* grassData = load_data(&width, &height, &nrChannels, "/home/diman/Desktop/Diman/Programming work/C/template/src/assets/blending_transparent_window.png");
-  unsigned int grassTexture;
-  generateTexture(&grassTexture);
-  bindTexture(grassTexture);
-  uploadTexture(width, height, nrChannels, grassData);
-  setTexParameters();
 
-  float vertices[] = {
-    0,0,0,  0,0,
-    0.5, 0, 0, 1, 0,
-    0, 0.5, 0, 0, 1,
-    0.5, 0.5, 0, 1,1
-  };
-  unsigned int indices[] = {
-    0,1,2,
-    1,2,3
-  };
+  unsigned int containerVAO = setBufferObject();
+  unsigned int containerTexture = setTextureBuffer("/home/diman/Desktop/Diman/Programming work/C/template/src/assets/container2.png");
+  unsigned int containerSpecular = setTextureBuffer("/home/diman/Desktop/Diman/Programming work/C/template/src/assets/container2_specular.png");
 
-  unsigned int grassVAO, grassVBO, grassEBO;
-  glGenVertexArrays(1, &grassVAO);
-  glGenBuffers(1, &grassVBO);
-  glGenBuffers(1, &grassEBO);
-  glBindVertexArray(grassVAO);
-  glBindBuffer(GL_ARRAY_BUFFER, grassVBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, grassEBO);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)0);
-  glEnableVertexAttribArray(0);
-  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(3*sizeof(float)));
-  glEnableVertexAttribArray(1);
+  unsigned int skyboxVAO = generateSkyboxVAO();
+  unsigned int skyboxTexture = generateSkyboxCubemap();
+
+  unsigned int fbo = generateFBO();
+  unsigned int modifiedTexture = generateColorbufferFromFBO();
+  unsigned int screenVAO = generateScreen();
+
+  if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+    printf("Framebuffer not complete");
+    return -1;
+  } else {
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  }
 
   mat4 projection;
-glm_perspective(glm_rad(80.0f), 800.0f/600.f, 0.1f, 400, projection);
+  glm_perspective(glm_rad(80.0f), 800.0f/600.f, 0.1f, 400, projection);
 
   float deltaTime;
   float currentFrame;
   float lastFrame;
-  vec3 distance;
 
-  // shader stuff
-  int vertexId = ConfigureVertex("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/vertex.glsl");
-  int vertexId2= ConfigureVertex("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/example_vertex.glsl");
-  int containerFrag = ConfigureFragment("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/fragContainer.glsl");
-  int lightFrag = ConfigureFragment("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/fragLight.glsl");
-  int transFrag = ConfigureFragment("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/example_transparency.glsl");
+  unsigned int vertexId = ConfigureVertex("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/vertex.glsl");
+  unsigned int containerFrag = ConfigureFragment("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/fragContainer.glsl");
+  unsigned int lightFrag = ConfigureFragment("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/fragLight.glsl");
+
+  unsigned int reflectiveVertex = ConfigureVertex("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/reflectiveVertex.glsl");
+  unsigned int reflectiveFrag = ConfigureFragment("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/reflectiveFrag.glsl");
+
   unsigned int containerShader = LinkShaders(vertexId, containerFrag);
   unsigned int lightShader = LinkShaders(vertexId, lightFrag);
-  unsigned int transShader = LinkShaders(vertexId2, transFrag);
+  unsigned int screenShader = generateScreenShaders("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/screenVertex.glsl", "/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/screenFrag.glsl");
+  unsigned int reflectiveShader = LinkShaders(reflectiveVertex, reflectiveFrag);
+  unsigned int cubemapShader = generateSkyboxShader("/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/cubemapVertex.glsl", "/home/diman/Desktop/Diman/Programming work/C/template/src/shaders/cubemapFrag.glsl");
  
   glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
   glEnable(GL_DEPTH_TEST);
@@ -136,79 +122,75 @@ glm_perspective(glm_rad(80.0f), 800.0f/600.f, 0.1f, 400, projection);
   PointLight pl = {{0,0,0}, 1, 0.5, 0.32, {0.2, 0.2, 0.2}, {1,1,1}, {1,1,1}};
   SpotLight sl = {cosf(glm_rad(20)), cosf(glm_rad(40)), {dir[0], dir[1], dir[2]}, {cameraPos[0], cameraPos[1], cameraPos[2]}, 1, 0.017, 0.0007};
   
-  Model place = Model_load("/home/diman/Desktop/Diman/Programming work/C/template/src/models/place/source/Untitled.glb");
+  // Model place = Model_load("/home/diman/Desktop/Diman/Programming work/C/template/src/models/place/source/Untitled.glb");
+  bool onFloor = false;
 
   while(!glfwWindowShouldClose(window))
   {
     currentFrame = glfwGetTime();
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
-    speed = deltaTime * 5;
-
+    speed = deltaTime * 2;
     processInput(window);
     glfwSetCursorPosCallback(window, mouse_callback);
+
     calcCoordAxes(right, up, dir);
     calcTarget(cameraPos, dir, target);
     glm_lookat(cameraPos, target, up, view);
 
-    glClearColor(0.09,0.606,0.829, 1.0f);
+    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+    glEnable(GL_DEPTH_TEST);
+    glClearColor(1,1,1, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    glEnable(GL_DEPTH_TEST);
 
-    glUseProgram(transShader);
-    glUniformMatrix4fv(glGetUniformLocation(transShader, "view"), 1, GL_FALSE, view[0]);
-    glUniformMatrix4fv(glGetUniformLocation(transShader, "projection"), 1, GL_FALSE, projection[0]);
+    glDepthMask(GL_FALSE);
+    glUseProgram(cubemapShader);
+    mat4 new_view;
+    mat3 rot;
+
+    glm_mat4_copy(view, new_view);
+    glm_mat4_pick3(new_view, rot);
+    glm_mat4_identity(new_view); 
+    glm_mat4_ins3(rot, new_view);
+    glUniformMatrix4fv(glGetUniformLocation(cubemapShader, "view"), 1, GL_FALSE, new_view[0]);
+    glUniformMatrix4fv(glGetUniformLocation(cubemapShader, "projection"), 1, GL_FALSE, projection[0]);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+    glBindVertexArray(skyboxVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+
+    glDepthMask(GL_TRUE);
+    glUseProgram(reflectiveShader);
+    glUniformMatrix4fv(glGetUniformLocation(reflectiveShader, "view"), 1, GL_FALSE, view[0]);
+    glUniformMatrix4fv(glGetUniformLocation(reflectiveShader ,"projection"), 1, GL_FALSE, projection[0]);
     glm_mat4_identity(model);
-    glUniformMatrix4fv(glGetUniformLocation(transShader, "model"), 1, GL_FALSE, model[0]);
-    glUniform1i(glGetUniformLocation(transShader, "texture"), 0);
-    glBindVertexArray(grassVAO);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, grassTexture);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glm_translate(model, (vec3){1,0,1});
+    glm_scale(model, (vec3){1, 10, 1});
+    glUniformMatrix4fv(glGetUniformLocation(reflectiveShader, "model"), 1, GL_FALSE, model[0]);
+    glUniform3f(glGetUniformLocation(reflectiveShader, "cameraPos"), cameraPos[0], cameraPos[1], cameraPos[2]);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+    glBindVertexArray(containerVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
     
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f); 
+    glClear(GL_COLOR_BUFFER_BIT);
 
-    // glEnable(GL_STENCIL_TEST);
-    // glStencilMask(0xFF);
-    // glStencilOp(GL_ALWAYS, GL_ALWAYS, GL_ALWAYS);
-    // glUseProgram(outlineShader); 
-    // glDisable(GL_DEPTH_TEST);
-    // glStencilMask(0x00);
-    // // scale object
-    // // use outline shader
-    // // draw objects
-    // glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-    // glEnable(GL_DEPTH_TEST);
-    // glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
-    
-    // glUseProgram(containerShader);
-    // glUniformMatrix4fv(glGetUniformLocation(containerShader, "view"), 1, GL_FALSE, view[0]);
-    // glUniformMatrix4fv(glGetUniformLocation(containerShader, "projection"), 1, GL_FALSE, projection[0]);
-    // glUniform3f(glGetUniformLocation(containerShader, "viewPos"),cameraPos[0], cameraPos[1], cameraPos[2]);
-    // glUniform1i(glGetUniformLocation(containerShader, "material.texture_diffuse1"), 0);
-    // glUniform1i(glGetUniformLocation(containerShader, "material.texture_specular1"), 1);
-    // glUniform1f(glGetUniformLocation(containerShader, "material.shininess"), 32);
-    //
-    // setDirectionalLight(containerShader, dl, 1);
-    // // setPointLight(containerShader, &pl, 1);
-    // // setSpotLight(containerShader, &sl, cameraPos, dir);
-    //
-    // glm_mat4_identity(model);
-    // glUniformMatrix4fv(glGetUniformLocation(containerShader, "model"), 1, GL_FALSE, model[0]);
-    // // Model_draw(&place, &containerShader);
-    // //
-    // glActiveTexture(GL_TEXTURE0);
-    // glBindTexture(GL_TEXTURE_2D, containerTexture);
-    // glActiveTexture(GL_TEXTURE1);
-    // glBindTexture(GL_TEXTURE_2D, containerSpecular);
-    // glBindVertexArray(containerVAO);
-    // glDrawArrays(GL_TRIANGLES, 0, 36);
+    glUseProgram(screenShader);
+    glDisable(GL_DEPTH_TEST);
+    glBindVertexArray(screenVAO);
+    glBindTexture(GL_TEXTURE_2D, modifiedTexture);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
     glfwSwapBuffers(window);
     glfwPollEvents();
   }
  
-  // glDeleteVertexArrays(1, &containerVAO);
+  glDeleteVertexArrays(1, &containerVAO);
   glDeleteProgram(containerShader);
+  glDeleteProgram(screenShader);
+  glDeleteFramebuffers(1, &fbo);
   
   glfwTerminate();
   return 0;
 }
-

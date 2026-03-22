@@ -101,4 +101,5 @@ CMakeFiles/main.dir/src/main.c.o: \
  /home/diman/Desktop/Diman/Programming\ work/C/template/include/model.h \
  /home/diman/Desktop/Diman/Programming\ work/C/template/include/./mesh.h \
  /home/diman/Desktop/Diman/Programming\ work/C/template/include/stb_image.h \
- /home/diman/Desktop/Diman/Programming\ work/C/template/include/nuklear.h
+ /home/diman/Desktop/Diman/Programming\ work/C/template/include/skybox.h \
+ /home/diman/Desktop/Diman/Programming\ work/C/template/include/framebuffer.h

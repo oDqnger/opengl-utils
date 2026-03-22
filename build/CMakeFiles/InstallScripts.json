@@ -1,7 +1,8 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/diman/Desktop/Diman/Programming work/C/template/build/cmake_install.cmake"
+		"/home/diman/Desktop/Diman/Programming work/C/template/build/cmake_install.cmake",
+		"/home/diman/Desktop/Diman/Programming work/C/template/build/third_party/cimgui/cmake_install.cmake"
 	],
 	"Parallel" : false
 }
