@@ -226,24 +226,10 @@ CMakeFiles/main.dir/src/utils/perlin.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/utils/perlin.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/perlin.c" -o CMakeFiles/main.dir/src/utils/perlin.c.s
 
-CMakeFiles/main.dir/src/utils/nuklear.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/utils/nuklear.c.o: /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/nuklear.c
-CMakeFiles/main.dir/src/utils/nuklear.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/main.dir/src/utils/nuklear.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/utils/nuklear.c.o -MF CMakeFiles/main.dir/src/utils/nuklear.c.o.d -o CMakeFiles/main.dir/src/utils/nuklear.c.o -c "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/nuklear.c"
-
-CMakeFiles/main.dir/src/utils/nuklear.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/src/utils/nuklear.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/nuklear.c" > CMakeFiles/main.dir/src/utils/nuklear.c.i
-
-CMakeFiles/main.dir/src/utils/nuklear.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/utils/nuklear.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/nuklear.c" -o CMakeFiles/main.dir/src/utils/nuklear.c.s
-
 CMakeFiles/main.dir/src/utils/skybox.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/utils/skybox.c.o: /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/skybox.c
 CMakeFiles/main.dir/src/utils/skybox.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/main.dir/src/utils/skybox.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/main.dir/src/utils/skybox.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/utils/skybox.c.o -MF CMakeFiles/main.dir/src/utils/skybox.c.o.d -o CMakeFiles/main.dir/src/utils/skybox.c.o -c "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/skybox.c"
 
 CMakeFiles/main.dir/src/utils/skybox.c.i: cmake_force
@@ -257,7 +243,7 @@ CMakeFiles/main.dir/src/utils/skybox.c.s: cmake_force
 CMakeFiles/main.dir/src/utils/framebuffer.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/utils/framebuffer.c.o: /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/framebuffer.c
 CMakeFiles/main.dir/src/utils/framebuffer.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/main.dir/src/utils/framebuffer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/main.dir/src/utils/framebuffer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/utils/framebuffer.c.o -MF CMakeFiles/main.dir/src/utils/framebuffer.c.o.d -o CMakeFiles/main.dir/src/utils/framebuffer.c.o -c "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/framebuffer.c"
 
 CMakeFiles/main.dir/src/utils/framebuffer.c.i: cmake_force
@@ -281,7 +267,6 @@ main_OBJECTS = \
 "CMakeFiles/main.dir/src/utils/lighting.c.o" \
 "CMakeFiles/main.dir/src/utils/block.c.o" \
 "CMakeFiles/main.dir/src/utils/perlin.c.o" \
-"CMakeFiles/main.dir/src/utils/nuklear.c.o" \
 "CMakeFiles/main.dir/src/utils/skybox.c.o" \
 "CMakeFiles/main.dir/src/utils/framebuffer.c.o"
 
@@ -299,7 +284,6 @@ main: CMakeFiles/main.dir/src/utils/model.c.o
 main: CMakeFiles/main.dir/src/utils/lighting.c.o
 main: CMakeFiles/main.dir/src/utils/block.c.o
 main: CMakeFiles/main.dir/src/utils/perlin.c.o
-main: CMakeFiles/main.dir/src/utils/nuklear.c.o
 main: CMakeFiles/main.dir/src/utils/skybox.c.o
 main: CMakeFiles/main.dir/src/utils/framebuffer.c.o
 main: CMakeFiles/main.dir/build.make
@@ -308,7 +292,7 @@ main: /usr/lib/libglfw.so.3.4
 main: /usr/lib/libGL.so
 main: third_party/cimgui/cimgui.so
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Linking C executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -16,7 +16,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/lighting.c" "CMakeFiles/main.dir/src/utils/lighting.c.o" "gcc" "CMakeFiles/main.dir/src/utils/lighting.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/mesh.c" "CMakeFiles/main.dir/src/utils/mesh.c.o" "gcc" "CMakeFiles/main.dir/src/utils/mesh.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/model.c" "CMakeFiles/main.dir/src/utils/model.c.o" "gcc" "CMakeFiles/main.dir/src/utils/model.c.o.d"
-  "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/nuklear.c" "CMakeFiles/main.dir/src/utils/nuklear.c.o" "gcc" "CMakeFiles/main.dir/src/utils/nuklear.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/perlin.c" "CMakeFiles/main.dir/src/utils/perlin.c.o" "gcc" "CMakeFiles/main.dir/src/utils/perlin.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/shader.c" "CMakeFiles/main.dir/src/utils/shader.c.o" "gcc" "CMakeFiles/main.dir/src/utils/shader.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/skybox.c" "CMakeFiles/main.dir/src/utils/skybox.c.o" "gcc" "CMakeFiles/main.dir/src/utils/skybox.c.o.d"

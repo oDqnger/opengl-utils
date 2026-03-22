@@ -379,30 +379,6 @@ src/utils/model.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/model.c.s
 .PHONY : src/utils/model.c.s
 
-src/utils/nuklear.o: src/utils/nuklear.c.o
-.PHONY : src/utils/nuklear.o
-
-# target to build an object file
-src/utils/nuklear.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/nuklear.c.o
-.PHONY : src/utils/nuklear.c.o
-
-src/utils/nuklear.i: src/utils/nuklear.c.i
-.PHONY : src/utils/nuklear.i
-
-# target to preprocess a source file
-src/utils/nuklear.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/nuklear.c.i
-.PHONY : src/utils/nuklear.c.i
-
-src/utils/nuklear.s: src/utils/nuklear.c.s
-.PHONY : src/utils/nuklear.s
-
-# target to generate assembly for a file
-src/utils/nuklear.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/nuklear.c.s
-.PHONY : src/utils/nuklear.c.s
-
 src/utils/perlin.o: src/utils/perlin.c.o
 .PHONY : src/utils/perlin.o
 
@@ -561,9 +537,6 @@ help:
 	@echo "... src/utils/model.o"
 	@echo "... src/utils/model.i"
 	@echo "... src/utils/model.s"
-	@echo "... src/utils/nuklear.o"
-	@echo "... src/utils/nuklear.i"
-	@echo "... src/utils/nuklear.s"
 	@echo "... src/utils/perlin.o"
 	@echo "... src/utils/perlin.i"
 	@echo "... src/utils/perlin.s"

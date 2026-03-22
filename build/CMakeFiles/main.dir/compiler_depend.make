@@ -990,19 +990,6 @@ CMakeFiles/main.dir/src/utils/model.c.o: /home/diman/Desktop/Diman/Programming\ 
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/xmmintrin.h
 
-CMakeFiles/main.dir/src/utils/nuklear.c.o: /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/nuklear.c \
-  /home/diman/Desktop/Diman/Programming\ work/C/template/include/nuklear.h \
-  /usr/include/assert.h \
-  /usr/include/bits/long-double.h \
-  /usr/include/bits/timesize.h \
-  /usr/include/bits/wordsize.h \
-  /usr/include/features-time64.h \
-  /usr/include/features.h \
-  /usr/include/gnu/stubs-64.h \
-  /usr/include/gnu/stubs.h \
-  /usr/include/stdc-predef.h \
-  /usr/include/sys/cdefs.h
-
 CMakeFiles/main.dir/src/utils/perlin.c.o: /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/perlin.c \
   /usr/include/alloca.h \
   /usr/include/assert.h \
@@ -1612,7 +1599,6 @@ main: /usr/lib/Scrt1.o \
   CMakeFiles/main.dir/src/utils/lighting.c.o \
   CMakeFiles/main.dir/src/utils/mesh.c.o \
   CMakeFiles/main.dir/src/utils/model.c.o \
-  CMakeFiles/main.dir/src/utils/nuklear.c.o \
   CMakeFiles/main.dir/src/utils/perlin.c.o \
   CMakeFiles/main.dir/src/utils/shader.c.o \
   CMakeFiles/main.dir/src/utils/skybox.c.o \
@@ -1630,8 +1616,6 @@ CMakeFiles/main.dir/src/utils/skybox.c.o:
 CMakeFiles/main.dir/src/utils/shader.c.o:
 
 CMakeFiles/main.dir/src/utils/perlin.c.o:
-
-CMakeFiles/main.dir/src/utils/nuklear.c.o:
 
 CMakeFiles/main.dir/src/utils/mesh.c.o:
 
@@ -1674,10 +1658,6 @@ CMakeFiles/main.dir/src/utils/glad.c.o:
 /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/shader.c:
 
 /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/perlin.c:
-
-/home/diman/Desktop/Diman/Programming\ work/C/template/include/nuklear.h:
-
-/home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/nuklear.c:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h:
 

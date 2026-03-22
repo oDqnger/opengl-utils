@@ -4,49 +4,37 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec3 right, bool onFloor) {
+void movementKeys(GLFWwindow *window, vec3 dir, float speed, vec3 cameraPos, vec3 right, bool onFloor, float gravity) {
     vec3 forward = { dir[0], 0.0f, dir[2] };
     if (glm_vec3_norm(forward) > 0.0001f) glm_vec3_normalize(forward);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        if (!onFloor) {
-          vec3 vel;
-          glm_vec3_scale(forward, speed, vel);
-          glm_vec3_add(cameraPos, vel, cameraPos);
-        } else {
-          vec3 vel;
-          glm_vec3_scale(forward, -speed, vel);
-          glm_vec3_add(cameraPos, vel, cameraPos);
-        }
+      vec3 vel;
+      glm_vec3_scale(forward, speed, vel);
+      glm_vec3_add(cameraPos, vel, cameraPos);
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        if (!onFloor) {
-          vec3 vel;
-          glm_vec3_scale(forward, speed, vel);
-          glm_vec3_sub(cameraPos, vel, cameraPos);
-        } else {
-          vec3 vel;
-          glm_vec3_scale(forward, -speed, vel);
-          glm_vec3_sub(cameraPos, vel, cameraPos);
-        }
+      vec3 vel;
+      glm_vec3_scale(forward, speed, vel);
+      glm_vec3_sub(cameraPos, vel, cameraPos);
     }
     
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        vec3 velocity;
-        glm_vec3_scale(right, speed, velocity);
-        glm_vec3_sub(cameraPos, velocity, cameraPos);
+      vec3 velocity;
+      glm_vec3_scale(right, speed, velocity);
+      glm_vec3_sub(cameraPos, velocity, cameraPos);
     }
 
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        vec3 velocity;
-        glm_vec3_scale(right, speed, velocity);
-        glm_vec3_add(cameraPos, velocity, cameraPos);
+      vec3 velocity;
+      glm_vec3_scale(right, speed, velocity);
+      glm_vec3_add(cameraPos, velocity, cameraPos);
     }
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-      cameraPos[1] += 2 * speed;
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && onFloor) {
+      cameraPos[1] += gravity;
     }
     if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS) {
-      cameraPos[1] -= 2 * speed;
+      cameraPos[1] -= gravity;
     }
 }
 
@@ -82,8 +70,8 @@ void calcTarget(vec3 cameraPos, vec3 dir, vec3 target) {
   glm_vec3_add(cameraPos, dir, target);
 }
 
-bool checkCollision(vec3 cameraPos, vec3 objPos, float radius) {
-  vec3 box[2] = {{objPos[0]-radius, objPos[1]-radius, objPos[2]-radius}, {objPos[0]+radius, objPos[1]+radius, objPos[2]+radius}};
+bool checkCollision(vec3 cameraPos, vec3 objPos, float verticalRadius, float horizontalRadius) {
+  vec3 box[2] = {{objPos[0]-horizontalRadius, objPos[1]-verticalRadius, objPos[2]-horizontalRadius}, {objPos[0]+horizontalRadius, objPos[1]+verticalRadius, objPos[2]+horizontalRadius}};
   if (glm_aabb_point(box, cameraPos) == true) {
     return true;
   }

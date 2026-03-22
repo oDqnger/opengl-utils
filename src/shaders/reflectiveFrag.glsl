@@ -11,5 +11,6 @@ void main() {
     vec3 reflective = reflect(incidence, normalize(Normal));
     vec3 refractive = refract(incidence, normalize(Normal), 1/1.5);
 
-    aColor = texture(texture1, refractive);
+    aColor = texture(texture1, reflective);
+    // aColor = vec4(0,0,0,1);
 }

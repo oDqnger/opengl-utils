@@ -16,8 +16,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/utils/mesh.c.o.d"
   "CMakeFiles/main.dir/src/utils/model.c.o"
   "CMakeFiles/main.dir/src/utils/model.c.o.d"
-  "CMakeFiles/main.dir/src/utils/nuklear.c.o"
-  "CMakeFiles/main.dir/src/utils/nuklear.c.o.d"
   "CMakeFiles/main.dir/src/utils/perlin.c.o"
   "CMakeFiles/main.dir/src/utils/perlin.c.o.d"
   "CMakeFiles/main.dir/src/utils/shader.c.o"

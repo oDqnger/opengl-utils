@@ -13,7 +13,6 @@ main: \
   CMakeFiles/main.dir/src/utils/lighting.c.o \
   CMakeFiles/main.dir/src/utils/block.c.o \
   CMakeFiles/main.dir/src/utils/perlin.c.o \
-  CMakeFiles/main.dir/src/utils/nuklear.c.o \
   CMakeFiles/main.dir/src/utils/skybox.c.o \
   CMakeFiles/main.dir/src/utils/framebuffer.c.o \
   /usr/lib/libglfw.so.3.4 \
@@ -84,8 +83,6 @@ CMakeFiles/main.dir/src/utils/lighting.c.o:
 CMakeFiles/main.dir/src/utils/block.c.o:
 
 CMakeFiles/main.dir/src/utils/perlin.c.o:
-
-CMakeFiles/main.dir/src/utils/nuklear.c.o:
 
 CMakeFiles/main.dir/src/utils/skybox.c.o:
 
