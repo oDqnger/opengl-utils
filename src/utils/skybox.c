@@ -2,6 +2,7 @@
 #include "skybox.h"
 #include "textures.h"
 #include "shader.h"
+#include <cglm/cglm.h>
 
 static float skyboxVertices[] = {
     // positions          
@@ -97,4 +98,22 @@ unsigned int generateSkyboxShader(const char* vertex, const char* frag) {
   unsigned int cubemapShader = LinkShaders(cubemapVertex, cubemapFrag);
 
   return cubemapShader;
+}
+
+void renderSkybox(unsigned int cubemapShader, unsigned int skyboxTexture, unsigned int skyboxVAO, mat4 view, mat4 projection) {
+    glDepthMask(GL_FALSE);
+    glUseProgram(cubemapShader);
+    mat4 new_view;
+    mat3 rot;
+
+    glm_mat4_copy(view, new_view);
+    glm_mat4_pick3(new_view, rot);
+    glm_mat4_identity(new_view); 
+    glm_mat4_ins3(rot, new_view);
+    glUniformMatrix4fv(glGetUniformLocation(cubemapShader, "view"), 1, GL_FALSE, new_view[0]);
+    glUniformMatrix4fv(glGetUniformLocation(cubemapShader, "projection"), 1, GL_FALSE, projection[0]);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+    glBindVertexArray(skyboxVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glDepthMask(GL_TRUE);
 }

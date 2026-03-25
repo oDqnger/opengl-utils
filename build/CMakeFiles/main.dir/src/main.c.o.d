@@ -102,4 +102,6 @@ CMakeFiles/main.dir/src/main.c.o: \
  /home/diman/Desktop/Diman/Programming\ work/C/template/include/./mesh.h \
  /home/diman/Desktop/Diman/Programming\ work/C/template/include/stb_image.h \
  /home/diman/Desktop/Diman/Programming\ work/C/template/include/skybox.h \
- /home/diman/Desktop/Diman/Programming\ work/C/template/include/framebuffer.h
+ /home/diman/Desktop/Diman/Programming\ work/C/template/include/framebuffer.h \
+ /home/diman/Desktop/Diman/Programming\ work/C/template/include/bullet.h \
+ /home/diman/Desktop/Diman/Programming\ work/C/template/include/stb_ds.h

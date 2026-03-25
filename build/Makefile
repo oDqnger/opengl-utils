@@ -85,51 +85,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" "/home/diman/Desktop/Diman/Programming work/C/template/build//CMakeFiles/progress.marks"
@@ -173,19 +128,6 @@ main: cmake_check_build_system
 main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
-
-#=============================================================================
-# Target rules for targets named cimgui
-
-# Build rule for target.
-cimgui: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cimgui
-.PHONY : cimgui
-
-# fast build rule for target.
-cimgui/fast:
-	$(MAKE) $(MAKESILENT) -f third_party/cimgui/CMakeFiles/cimgui.dir/build.make third_party/cimgui/CMakeFiles/cimgui.dir/build
-.PHONY : cimgui/fast
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
@@ -234,6 +176,30 @@ src/utils/block.s: src/utils/block.c.s
 src/utils/block.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/block.c.s
 .PHONY : src/utils/block.c.s
+
+src/utils/bullet.o: src/utils/bullet.c.o
+.PHONY : src/utils/bullet.o
+
+# target to build an object file
+src/utils/bullet.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/bullet.c.o
+.PHONY : src/utils/bullet.c.o
+
+src/utils/bullet.i: src/utils/bullet.c.i
+.PHONY : src/utils/bullet.i
+
+# target to preprocess a source file
+src/utils/bullet.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/bullet.c.i
+.PHONY : src/utils/bullet.c.i
+
+src/utils/bullet.s: src/utils/bullet.c.s
+.PHONY : src/utils/bullet.s
+
+# target to generate assembly for a file
+src/utils/bullet.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/bullet.c.s
+.PHONY : src/utils/bullet.c.s
 
 src/utils/camera.o: src/utils/camera.c.o
 .PHONY : src/utils/camera.o
@@ -451,6 +417,30 @@ src/utils/skybox.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/skybox.c.s
 .PHONY : src/utils/skybox.c.s
 
+src/utils/stb_ds.o: src/utils/stb_ds.c.o
+.PHONY : src/utils/stb_ds.o
+
+# target to build an object file
+src/utils/stb_ds.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/stb_ds.c.o
+.PHONY : src/utils/stb_ds.c.o
+
+src/utils/stb_ds.i: src/utils/stb_ds.c.i
+.PHONY : src/utils/stb_ds.i
+
+# target to preprocess a source file
+src/utils/stb_ds.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/stb_ds.c.i
+.PHONY : src/utils/stb_ds.c.i
+
+src/utils/stb_ds.s: src/utils/stb_ds.c.s
+.PHONY : src/utils/stb_ds.s
+
+# target to generate assembly for a file
+src/utils/stb_ds.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/utils/stb_ds.c.s
+.PHONY : src/utils/stb_ds.c.s
+
 src/utils/stb_image.o: src/utils/stb_image.c.o
 .PHONY : src/utils/stb_image.o
 
@@ -506,12 +496,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... cimgui"
 	@echo "... main"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
@@ -519,6 +504,9 @@ help:
 	@echo "... src/utils/block.o"
 	@echo "... src/utils/block.i"
 	@echo "... src/utils/block.s"
+	@echo "... src/utils/bullet.o"
+	@echo "... src/utils/bullet.i"
+	@echo "... src/utils/bullet.s"
 	@echo "... src/utils/camera.o"
 	@echo "... src/utils/camera.i"
 	@echo "... src/utils/camera.s"
@@ -546,6 +534,9 @@ help:
 	@echo "... src/utils/skybox.o"
 	@echo "... src/utils/skybox.i"
 	@echo "... src/utils/skybox.s"
+	@echo "... src/utils/stb_ds.o"
+	@echo "... src/utils/stb_ds.i"
+	@echo "... src/utils/stb_ds.s"
 	@echo "... src/utils/stb_image.o"
 	@echo "... src/utils/stb_image.i"
 	@echo "... src/utils/stb_image.s"

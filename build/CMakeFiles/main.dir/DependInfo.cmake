@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/diman/Desktop/Diman/Programming work/C/template/src/main.c" "CMakeFiles/main.dir/src/main.c.o" "gcc" "CMakeFiles/main.dir/src/main.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/block.c" "CMakeFiles/main.dir/src/utils/block.c.o" "gcc" "CMakeFiles/main.dir/src/utils/block.c.o.d"
+  "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/bullet.c" "CMakeFiles/main.dir/src/utils/bullet.c.o" "gcc" "CMakeFiles/main.dir/src/utils/bullet.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/camera.c" "CMakeFiles/main.dir/src/utils/camera.c.o" "gcc" "CMakeFiles/main.dir/src/utils/camera.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/framebuffer.c" "CMakeFiles/main.dir/src/utils/framebuffer.c.o" "gcc" "CMakeFiles/main.dir/src/utils/framebuffer.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/glad.c" "CMakeFiles/main.dir/src/utils/glad.c.o" "gcc" "CMakeFiles/main.dir/src/utils/glad.c.o.d"
@@ -19,6 +20,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/perlin.c" "CMakeFiles/main.dir/src/utils/perlin.c.o" "gcc" "CMakeFiles/main.dir/src/utils/perlin.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/shader.c" "CMakeFiles/main.dir/src/utils/shader.c.o" "gcc" "CMakeFiles/main.dir/src/utils/shader.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/skybox.c" "CMakeFiles/main.dir/src/utils/skybox.c.o" "gcc" "CMakeFiles/main.dir/src/utils/skybox.c.o.d"
+  "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/stb_ds.c" "CMakeFiles/main.dir/src/utils/stb_ds.c.o" "gcc" "CMakeFiles/main.dir/src/utils/stb_ds.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/stb_image.c" "CMakeFiles/main.dir/src/utils/stb_image.c.o" "gcc" "CMakeFiles/main.dir/src/utils/stb_image.c.o.d"
   "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/textures.c" "CMakeFiles/main.dir/src/utils/textures.c.o" "gcc" "CMakeFiles/main.dir/src/utils/textures.c.o.d"
   "" "main" "gcc" "CMakeFiles/main.dir/link.d"

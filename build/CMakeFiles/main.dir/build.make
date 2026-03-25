@@ -254,6 +254,34 @@ CMakeFiles/main.dir/src/utils/framebuffer.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/utils/framebuffer.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/framebuffer.c" -o CMakeFiles/main.dir/src/utils/framebuffer.c.s
 
+CMakeFiles/main.dir/src/utils/bullet.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/utils/bullet.c.o: /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/bullet.c
+CMakeFiles/main.dir/src/utils/bullet.c.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/main.dir/src/utils/bullet.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/utils/bullet.c.o -MF CMakeFiles/main.dir/src/utils/bullet.c.o.d -o CMakeFiles/main.dir/src/utils/bullet.c.o -c "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/bullet.c"
+
+CMakeFiles/main.dir/src/utils/bullet.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/src/utils/bullet.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/bullet.c" > CMakeFiles/main.dir/src/utils/bullet.c.i
+
+CMakeFiles/main.dir/src/utils/bullet.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/utils/bullet.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/bullet.c" -o CMakeFiles/main.dir/src/utils/bullet.c.s
+
+CMakeFiles/main.dir/src/utils/stb_ds.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/utils/stb_ds.c.o: /home/diman/Desktop/Diman/Programming\ work/C/template/src/utils/stb_ds.c
+CMakeFiles/main.dir/src/utils/stb_ds.c.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/main.dir/src/utils/stb_ds.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/utils/stb_ds.c.o -MF CMakeFiles/main.dir/src/utils/stb_ds.c.o.d -o CMakeFiles/main.dir/src/utils/stb_ds.c.o -c "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/stb_ds.c"
+
+CMakeFiles/main.dir/src/utils/stb_ds.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/src/utils/stb_ds.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/stb_ds.c" > CMakeFiles/main.dir/src/utils/stb_ds.c.i
+
+CMakeFiles/main.dir/src/utils/stb_ds.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/src/utils/stb_ds.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/diman/Desktop/Diman/Programming work/C/template/src/utils/stb_ds.c" -o CMakeFiles/main.dir/src/utils/stb_ds.c.s
+
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/src/main.c.o" \
@@ -268,7 +296,9 @@ main_OBJECTS = \
 "CMakeFiles/main.dir/src/utils/block.c.o" \
 "CMakeFiles/main.dir/src/utils/perlin.c.o" \
 "CMakeFiles/main.dir/src/utils/skybox.c.o" \
-"CMakeFiles/main.dir/src/utils/framebuffer.c.o"
+"CMakeFiles/main.dir/src/utils/framebuffer.c.o" \
+"CMakeFiles/main.dir/src/utils/bullet.c.o" \
+"CMakeFiles/main.dir/src/utils/stb_ds.c.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
@@ -286,13 +316,14 @@ main: CMakeFiles/main.dir/src/utils/block.c.o
 main: CMakeFiles/main.dir/src/utils/perlin.c.o
 main: CMakeFiles/main.dir/src/utils/skybox.c.o
 main: CMakeFiles/main.dir/src/utils/framebuffer.c.o
+main: CMakeFiles/main.dir/src/utils/bullet.c.o
+main: CMakeFiles/main.dir/src/utils/stb_ds.c.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/compiler_depend.ts
 main: /usr/lib/libglfw.so.3.4
 main: /usr/lib/libGL.so
-main: third_party/cimgui/cimgui.so
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Linking C executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/diman/Desktop/Diman/Programming work/C/template/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Linking C executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

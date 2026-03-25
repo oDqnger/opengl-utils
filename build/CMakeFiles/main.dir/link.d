@@ -15,6 +15,8 @@ main: \
   CMakeFiles/main.dir/src/utils/perlin.c.o \
   CMakeFiles/main.dir/src/utils/skybox.c.o \
   CMakeFiles/main.dir/src/utils/framebuffer.c.o \
+  CMakeFiles/main.dir/src/utils/bullet.c.o \
+  CMakeFiles/main.dir/src/utils/stb_ds.c.o \
   /usr/lib/libglfw.so.3.4 \
   /usr/lib/libGL.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libassimp.so \
@@ -24,7 +26,6 @@ main: \
   /usr/lib/libm.so.6 \
   /usr/lib/libmvec.so.1 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libdl.a \
-  third_party/cimgui/cimgui.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libgcc_s.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libgcc_s.so \
@@ -88,6 +89,10 @@ CMakeFiles/main.dir/src/utils/skybox.c.o:
 
 CMakeFiles/main.dir/src/utils/framebuffer.c.o:
 
+CMakeFiles/main.dir/src/utils/bullet.c.o:
+
+CMakeFiles/main.dir/src/utils/stb_ds.c.o:
+
 /usr/lib/libglfw.so.3.4:
 
 /usr/lib/libGL.so:
@@ -105,8 +110,6 @@ CMakeFiles/main.dir/src/utils/framebuffer.c.o:
 /usr/lib/libmvec.so.1:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libdl.a:
-
-third_party/cimgui/cimgui.so:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a:
 

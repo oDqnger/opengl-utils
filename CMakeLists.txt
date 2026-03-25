@@ -4,8 +4,6 @@ set(CMAKE_C_STANDARD 11)
 # Include header files
 include_directories(include)
 # Add cimgui
-add_subdirectory(third_party/cimgui)
-# All source files
 set(SOURCES
     src/main.c
     src/utils/glad.c
@@ -20,10 +18,11 @@ set(SOURCES
     src/utils/perlin.c
     src/utils/skybox.c
     src/utils/framebuffer.c
+    src/utils/bullet.c
+    src/utils/stb_ds.c
 )
 # Create executable
 add_executable(main ${SOURCES})
-target_compile_definitions(main PRIVATE CIMGUI_DEFINE_ENUMS_AND_STRUCTS)
 # Find libraries
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
@@ -35,6 +34,5 @@ target_link_libraries(main
     assimp
     m
     dl
-    cimgui
 )
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
